@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>公司论坛</title>
+    <link rel="stylesheet" type="text/css" href="css/main-header-footer.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/popover.css">
+    <link rel="stylesheet" type="text/css" href="css/message.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        body{
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            background-color: rgba(66, 66, 66, 1);
+        }
+
+
+        .form .title{
+            width: 1065px;
+            height: 50px;
+            background-color: white;
+            border:1px solid #e4e6eb ;
+        }
+        .title  ul{
+            list-style-type: none;
+            float: left;
+            padding: 0;
+
+        }
+        .title  ul  li{
+           display: inline;
+        }
+        .title ul li a{
+            display: inline-block;
+            width: 110px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+            color: black;
+        }
+        .title ul li a:hover{
+            color: #247aff;
+            background-color: #e0e0e0;
+        }
+        .title ul li span{
+            display: inline-block;
+            width: 20px;
+        }
+        .title-input{
+            display: inline;
+            float: right;
+            width: 500px;
+        }
+        .title-input a{
+            display: inline-block;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            width: 90px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 8px 0;
+            color: white;
+            background-color: #247aff;
+            border-radius: 6px;
+        }
+        .title-input input{
+            margin-top: 10px;
+            margin-left: 80px;
+            width: 250px;
+            font-size: 15px;
+            height: 30px;
+            vertical-align: top;
+        }
+
+        .title-input .search-icon {
+            display: inline-block;
+            background-color: #45c5ed;
+            color: white;
+            height: 30px;
+            line-height: 30px;
+            vertical-align: top;
+            margin-top: 10px;
+            width: 30px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .title-input-a a{
+            display: inline-block;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            height: 30px;
+            width: 30px;
+            line-height: 34px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 20px;
+            color: white;
+            background-color: #247aff;
+            border-radius: 2px;
+        }
+
+
+
+
+
+
+        .form{
+            margin:85px auto 0 auto;
+            width: 1065px;
+            background-color: white;
+            border-right:1px solid #e4e6eb ;
+            border-bottom:1px solid #e4e6eb ;
+        }
+        .main {
+            float: left;
+            width: 700px;
+            background-color: white;
+            border-right:1px solid #e4e6eb ;
+            border-left:1px solid #e4e6eb ;
+
+        }
+        .main ul{
+            list-style-type: none;
+            float: left;
+            padding: 0;
+        }
+        .main ul li{
+            display: table;
+            text-align: left;
+            width: 700px;
+            border-bottom:1px dotted #e4e6eb;
+        }
+        .main-div{
+            display: block;
+            padding: 20px 0;
+            margin: 0 30px;
+            font-size: 20px;
+        }
+        .main-div-com{
+            color: #aaa;
+            display: inline-block;
+            font-size: 40px;
+            float: left;
+            width: 40px;
+            height: 40px;
+            margin-right: 20px;
+            line-height: 40px;
+        }
+        .main-div-com span{
+            position: absolute;
+            color: #aaa;
+        }
+        .main-div-com-num {
+            position: absolute;
+            font-size: 20px;
+            margin-left:8px;
+            margin-top:0px;
+        }
+        .main-div-part{
+            display: inline-block;
+            width: 580px;
+        }
+        .main-div-title{
+            display: inline-block;
+            width: 580px;
+            height: 40px;
+            line-height: 40px;
+            text-align: left;
+        }
+        .main-div-title-name{
+            display: inline-block;
+            float: left;
+            height: 35px;
+            width: 400px;
+            line-height: 35px;
+        }
+        .main-div-title-name a{
+            text-decoration: none;
+            font-size: 16px;
+            color: #333;
+        }
+        .main-div-title-name a:hover{
+            color: #45c5ed;
+        }
+        .main-div-title-pic{
+            display: inline-block;
+            float: left;
+            height: 35px;
+            width: 150px;
+            font-size: 14px;
+            text-align: center;
+            line-height: 35px;
+
+        }
+        .main-div-title-pic a{
+            text-decoration: none;
+            color: #999;
+        }
+        .main-div-content{
+            position: relative;
+            width: 580px;
+            font-size: 15px;
+            color: #6a6a6a;
+
+        }
+        .main-div-content-text{
+            display: block;
+            width: 350px;
+            font-size:12px;
+        }
+        .main-div-content-img{
+            display: block;
+            width: 400px;
+            margin-top: 10px;
+        }
+        .main-div-content-img img{
+            width: 150px;
+            height: 150px;
+
+        }
+        .main-div-content ul{
+            list-style-type: none;
+            float: left;
+            padding: 0;
+            position: absolute;
+            right: 20px;
+            bottom: 0;
+        }
+
+        .main-div-content ul li{
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 13px;
+            width: 60px;
+            border: none;
+        }
+        .main-div-content ul li a{
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            color: #777;
+        }
+        .main-div-content ul li a:hover{
+            color: #45c5ed;
+        }
+
+
+
+
+
+
+        .aside{
+            display: inline-block;
+            float: right;
+            width: 363px;
+        }
+
+
+
+        .aside-information{
+            display: block;
+            float: left;
+            width: 349px;
+            background-color: white;
+            padding-bottom: 20px;
+            padding-left: 15px;
+            border-right:1px solid #e4e6eb ;
+            border-bottom:1px solid #e4e6eb ;
+        }
+        .aside-information-title{
+            display: block;
+            margin-top:16px ;
+            margin-left: 16px;
+        }
+        .aside-information-content{
+            display: block;
+            margin-left: 16px;
+            margin-top: 10px;
+        }
+        .aside-information-content-img{
+            display: inline-block;
+            width:100px;
+            float: left;
+            height: 100px;
+        }
+        .aside-information-content-img img{
+            width: 100px;
+            padding:2px;
+            border: 1px solid #333333;
+        }
+        .aside-information-content-right{
+            margin-left:30px;
+            display: inline-block;
+            float: left;
+        }
+        .aside-information-content-right ul{
+            list-style-type: none;
+            float: left;
+            padding: 0;
+        }
+        .aside-information-content-right ul li{
+            display: block;
+            margin-bottom: 10px;
+            font-size: 15px;
+            border: none;
+        }
+        .aside-information-content-right ul li a{
+            color: black;
+
+        }
+        .aside-information-content-right ul li a:hover{
+            color: #45c5ed;
+        }
+
+
+        .aside-qrcode-text{
+            vertical-align: top;
+            display: inline-block;
+            width: 230px;
+            font-size: 13px;
+        }
+        .aside-qrcode-img {
+            display: inline-block;
+            width:80px;
+            height: 80px;
+        }
+        .aside-qrcode-img img{
+            width: 80px;
+        }
+
+
+        .aside-hotpoint-content{
+            margin-top:20px ;
+            margin-left: 20px;
+        }
+        .aside-hotpoint-content ul{
+            list-style-type: none;
+            float: left;
+            padding: 0;
+        }
+        .aside-hotpoint-content ul li{
+            display: block;
+            margin-bottom: 10px;
+            font-size: 15px;
+            border: none;
+        }
+        .aside-hotpoint-content ul li span{
+            padding: 1px 4px;
+            font-size: 12px;
+            color: white;
+            background-color: #45c5ed;
+            margin-right: 7px;
+        }
+        .aside-hotpoint-content ul li a{
+            color: black;
+        }
+        .aside-hotpoint-content ul li a:hover{
+            color:#45c5ed;
+        }
+
+
+
+
+        .result-pagination {
+            display: block;
+            border-right: 1px solid #e4e6eb;
+            width:701px ;
+            margin-right: 349px;
+        }
+
+        .pagination {
+            display: table;
+            list-style: none;
+        }
+
+        .pagination > li {
+            display: inline;
+            letter-spacing: -3px;
+        }
+
+        .pagination > li > a {
+            letter-spacing: 0;
+            display: inline-block;
+            color: #337ab7;
+            font-size: 12px;
+            border: 1px solid #ddd;
+            background-color: white;
+            position: relative;
+            padding: 6px 12px;
+        }
+
+        .pagination > .active > a {
+            cursor: default;
+            background-color: #337ab7;
+            border-color: #337ab7;
+            color: white;
+        }
+
+        .pagination > .disable > a {
+            cursor: not-allowed;
+        }
+
+        .pagination > .active > a:hover {
+            cursor: default;
+            background-color: #337ab7;
+            border-color: #337ab7;
+            color: white;
+        }
+
+        .pagination > li > a:hover {
+            background-color: #eee;
+            color: #23527c;
+        }
+
+        .pagination > li:first-child > a {
+            border-bottom-left-radius: 6px;
+            border-top-left-radius: 6px;
+        }
+
+        .pagination > li:last-child > a {
+            border-bottom-right-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+
+
+        .writenew{
+            margin:20px auto 0 auto;
+            width: 1065px;
+            border-bottom:1px solid #e4e6eb ;
+        }
+        .writenew-title{
+            margin-left: 20px;
+            font-size: 14px;
+            margin-bottom:  10px;
+        }
+        .writenew-title span{
+            color: #45c5ed;
+        }
+        .writenew-title input{
+            padding:0 9px ;
+            width: 650px;
+            height: 30px;
+        }
+        .writenew-content{
+            width: 650px;
+        }
+        .writenew-content-title{
+            width: 630px;
+            margin-left: 20px;
+            background-color: #fafafa;
+            padding: 10px 20px;
+            border: 1px solid #888;
+            border-bottom: 0;
+        }
+        .writenew-content-title ul{
+            list-style-type: none;
+            padding: 0;
+        }
+        .writenew-content-title ul li{
+            display: inline-block;
+            font-size: 15px;
+            border: none;
+        }
+
+        .writenew-content-title ul li+li {
+            margin-left: 30px;
+        }
+
+        .writenew-content-title ul li a{
+
+            color: black;
+        }
+        .writenew-content-title ul li a span{
+            display: inline-block;
+            width:20px ;
+        }
+        .writenew-content-title ul li a:hover{
+            color: #45c5ed;
+        }
+        .writenew-content-a {
+            width: 670px;
+            margin-left: 20px;
+            padding: 20px 0;
+        }
+        .writenew-content-a a{
+            cursor: pointer;
+            background-color: #247aff;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 3px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="header-icon">
+        <img src="img/xkzk_only_logo.png" alt="company_logo">
+        <span>星科智控</span>
+    </div>
+    <div class="header-nav">
+        <ul>
+            <li><a href="../index.html">公司首页</a></li>
+            <li><a href="shopping.html">产品销售</a></li>
+            <li><a href="forum.html">公司论坛</a></li>
+            <li><a href="admin.html">仓库管理</a></li>
+        </ul>
+        <div class="nav-login">
+            <div class="login-icon">
+                <img src="img/user-small.jpg">
+            </div>
+            <div>
+                <a href="login.html">登录/注册</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="form">
+        <div class="title">
+            <ul>
+                <li><a href="#"><span class="fa fa-question-circle-o"></span> 提问</a></li>
+                <li><a href="#"><span class="fa fa-comments-o"></span> 话题</a></li>
+                <li><a href="#"><span class="fa fa-newspaper-o "></span> 最新</a></li>
+                <li><a href="#"><span class="fa fa-fire"></span> 热门</a></li>
+            </ul>
+            <div class="title-input">
+                <a href="#write-new">发帖子</a>
+                <input type="search" placeholder="请输入关键字..."><span class="search-icon"><span class="fa fa-search"></span></span>
+            </div>
+
+        </div>
+        <div class="main">
+        <ul id="post-ul">
+
+        </ul>
+        </div>
+        <div class="aside">
+            <div class="aside-information">
+                <div class="aside-information-title"><h4>我的信息</h4></div>
+                <div class="aside-information-content">
+                    <div class="aside-information-content-img">
+                        <img src="img/forum-head.jpg">
+                    </div>
+                    <div class="aside-information-content-right">
+                        <ul>
+                            <li><span class="fa fa-user"> 无人机发烧友伦伦</span> </li>
+                            <li><span class="fa fa-caret-right" > 企业用户</span></li>
+                            <li><a href="#"><span class="fa fa-cog"> 修改个人信息</span> </a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="aside-information">
+                <div class="aside-information-title"><h4>扫描二维码关注微信公众号</h4></div>
+                <div class="aside-information-content">
+                    <div class="aside-qrcode-text">扫描二维码，获取公司第一手资讯<br>热销商品，产品简介</div>
+                    <div class="aside-qrcode-img">
+                        <img src="img/test_qrcode.png">
+                    </div>
+                </div>
+            </div>
+            <div class="aside-information">
+                <div class="aside-information-title"><h4>本周热议</h4></div>
+                <div class="aside-hotpoint-content">
+                    <ul>
+                        <li>
+                            <span>1</span>
+                            <a href="#">高精度无人机飞控安全技术</a>
+                        </li>
+                        <li>
+                            <span>2</span>
+                            <a href="#">仓库用UWB定位方案</a>
+                        </li>
+                        <li>
+                            <span>3</span>
+                            <a href="#">仓海一速</a>
+                        </li>
+                        <li>
+                            <span>4</span>
+                            <a href="#">基于STM32的新型高稳定性版无人机飞控</a>
+                        </li>
+                        <li>
+                            <span>5</span>
+                            <a href="#">基于机器学习的无人机预警分析软件</a>
+                        </li>
+                        <li>
+                            <span>6</span>
+                            <a href="#">无人机客户端软件</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="result-pagination">
+            <ul class="pagination" id="page-ul">
+                <li><a href="#"><</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">></a></li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="writenew" id="write-new">
+        <div class="writenew-title">
+            <span class="fa fa-pencil-square"></span> 发表新帖
+        </div>
+        <div class="writenew-title">
+            <input type="text" v-model="title" placeholder="请填写标题">
+        </div>
+        <div class="writenew-content">
+            <div class="writenew-content-title">
+                <ul>
+                    <li><a href="#"><span class="fa fa-picture-o"></span>图片</a> </li>
+                    <li><a href="#"><span class="fa fa-file-video-o"></span>视频</a> </li>
+                    <li><a href="#"><span class="fa fa-smile-o"></span>表情</a> </li>
+                </ul>
+            </div>
+            <textarea style="margin-left:20px;width: 650px;height: 210px;padding: 20px 10px;" v-model="content" placeholder="请输入内容"></textarea>
+        </div>
+        <div class="writenew-content-a">
+            <a @click="insertPost">发&nbsp;&nbsp;帖</a>
+        </div>
+    </div>
+
+<div class="footer">
+    <div class="company">
+        <div class="company-logo">
+            <img src="img/xkzk_only_logo.png" alt="星科智控图标">
+            <span class="company_name">杭州星科智控有限公司</span>
+        </div>
+        <div class="company-purpose">
+            为您提供更方便、更智能的物联网解决方案
+        </div>
+    </div>
+    <div class="contact">
+        <div class="title">
+            联系方式
+        </div>
+        <div class="contact-method">
+            <span class="fa fa-envelope-o"></span>&nbsp;邮箱:&nbsp;576774908@qq.com
+        </div>
+        <div class="contact-method">
+            <span class="fa fa-phone"></span>&nbsp;电话:&nbsp;18768336795
+        </div>
+        <div class="contact-method">
+            <span class="fa fa-weixin"></span>&nbsp;微信:&nbsp;Zhao97225
+        </div>
+    </div>
+    <div class="concern">
+        <div class="title">
+            关注我们
+        </div>
+        <div class="wechat-logo">
+                <span class="fa fa-weixin fa-2x" data-trigger="hover" data-placement="top"
+                      data-container="body" data-toggle="popover"
+                      data-content="<img src='img/test_qrcode.png' width='70' height='70'>"></span>
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="js/footer-popover.js" type="text/javascript"></script>
+<script src="js/message.js"></script>
+<script src="js/vue.js" type="text/javascript"></script>
+<script src="js/main.js" type="text/javascript"></script>
+<script>
+
+    $(document).ready(function() {
+        getPostPage(1);
+    });
+
+    var writeNew = new Vue({
+        el: "#write-new",
+        data: {
+            title: "",
+            content: ""
+        },
+        methods: {
+            insertPost: function() {
+                var title = this.title;
+                var content = this.content;
+                if(title != '' && title != null) {
+                    generalRequest('/postMessage', {
+                        title: title,
+                        content: content,
+                        userId: "无人机发烧友伦伦"
+                    }, function (result) {
+                        if (result.resultCode == 1) {
+                            $.message("发帖成功");
+                            getPostPage(1);
+                        } else {
+                            alert(result.msg);
+                        }
+                    });
+                } else {
+                    alert("请至少输入标题");
+                }
+            }
+        }
+    });
+
+    function getPostPage(page) {
+        generalRequest('/postPage', {
+            current: page
+        }, function (result) {
+            if(result.resultCode == 1) {
+                var pageData = result.value.records;
+                var postUl = $("#post-ul");
+                postUl.empty();
+                for(var i = 0; i < pageData.length; ++i) {
+                    if(pageData[i].comment == '' || pageData[i].comment == null) {
+                        postUl.append('<li><div class="main-div"><div class="main-div-com"><span class="fa fa-comment-o"></span>' +
+                            '<div class="main-div-com-num">' + pageData[i].viewNum + '</div></div><div class="main-div-part"><div class="main-div-title">' +
+                            '<div class="main-div-title-name"><a href="#">' + pageData[i].title + '</a></div><div class="main-div-title-pic">' +
+                            '<a href="#"><span class="fa fa-user"></span> ' + pageData[i].userId + '</a></div></div><div class="main-div-content">' +
+                            '<div class="main-div-content-text">' + pageData[i].content + '</div><div class="main-div-content-img">' +
+                            '</div><ul><li><a href="#"><span class="fa fa-star"> 收藏</span></a> </li>' +
+                            '<li><a href="#"><span class="fa fa-code-fork"> 标记</span></a> </li><li><a href="#"><span class="fa fa-share"> 分享</span></a> </li>' +
+                            '</ul></div></div></div></li>');
+                    } else {
+                        postUl.append('<li><div class="main-div"><div class="main-div-com"><span class="fa fa-comment-o"></span>' +
+                            '<div class="main-div-com-num">' + pageData[i].viewNum + '</div></div><div class="main-div-part"><div class="main-div-title">' +
+                            '<div class="main-div-title-name"><a href="#">' + pageData[i].title + '</a></div><div class="main-div-title-pic">' +
+                            '<a href="#"><span class="fa fa-user"></span> ' + pageData[i].userId + '</a></div></div><div class="main-div-content">' +
+                            '<div class="main-div-content-text">' + pageData[i].content + '</div><div class="main-div-content-img">' +
+                            '<img src="' + pageData[i].comment + '"></div><ul><li><a href="#"><span class="fa fa-star"> 收藏</span></a> </li>' +
+                            '<li><a href="#"><span class="fa fa-code-fork"> 标记</span></a> </li><li><a href="#"><span class="fa fa-share"> 分享</span></a> </li>' +
+                            '</ul></div></div></div></li>');
+                    }
+
+                    var pageUl = $('#page-ul');
+                    showPageNumList(pageUl, result.value, 5);
+                }
+            } else {
+                alert(result.msg);
+            }
+        });
+    }
+
+    function showPageNumList(pageNumList, resultPage, btnNum) {
+        pageNumList.empty();
+        if(resultPage.records.length != 0) {
+            var pageNum = resultPage.pages;
+            var nowPage = resultPage.current;
+
+            if(pageNum <= btnNum) {
+                showPageNumBtn(pageNumList, 1, pageNum, nowPage, pageNum);
+            } else if(nowPage <= (btnNum + 1) / 2) {
+                showPageNumBtn(pageNumList, 1, btnNum, nowPage, pageNum);
+            } else if(pageNum - (btnNum + 1) / 2 <= nowPage) {
+                showPageNumBtn(pageNumList, pageNum - (btnNum - 1), pageNum, nowPage, pageNum);
+            } else {
+                showPageNumBtn(pageNumList, nowPage - (btnNum - 1) / 2 , nowPage + (btnNum - 1) / 2  , nowPage, pageNum);
+            }
+
+        } else {
+            pageNumList.append('<li class="disabled"><a href="#">&laquo;</a></li>' +
+                '<li class="disabled"><a href="#">&lt;</a></li>' +
+                '<li class="disabled"><a href="#">1</a></li>' +
+                '<li class="disabled"><a href="#">&gt;</a></li>' +
+                '<li class="disabled"><a href="#">&raquo;</a></li>');
+        }
+    }
+
+    function showPageNumBtn(pageNumList, startNum, endNum, currentNum, allNum) {
+        pageNumList.append('<li pagenum="1"><a href="#querycondition">&laquo;</a></li>');
+        if(currentNum == 1) {
+            pageNumList.append('<li class="disabled"><a href="#querycondition">&lt;</a></li>');
+        } else {
+            pageNumList.append('<li pagenum="' + (currentNum - 1) + '"><a href="#querycondition">&lt;</a></li>');
+        }
+
+        for (var i = startNum; i <= endNum; ++i) {
+            pageNumList.append('<li pagenum="' + i + '"><a href="#querycondition">' + i + '</a></li>');
+        }
+
+        if(currentNum == allNum) {
+            pageNumList.append('<li class="disabled"><a href="#querycondition">&gt;</a></li>');
+        } else {
+            pageNumList.append('<li pagenum="' + (currentNum + 1) + '"><a href="#querycondition">&gt;</a></li>');
+        }
+        pageNumList.append('<li pagenum="' + allNum + '"><a href="#querycondition">&raquo;</a></li>');
+
+        pageNumList.children().get(currentNum - startNum + 2).setAttribute("class", "active");
+        pageNumList.children().each(function() {
+            if(this.getAttribute("pagenum"))
+                this.children[0].setAttribute("onClick", "clickToPage(this)");
+        })
+    }
+
+    function clickToPage(elem) {
+        if(elem.parentNode.getAttribute("class") != "active") {
+            var targetpage = elem.parentNode.getAttribute("pagenum");
+            getPostPage(targetpage);
+        }
+    }
+</script>
+</html>
